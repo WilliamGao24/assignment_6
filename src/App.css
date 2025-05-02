@@ -1,42 +1,44 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #000; /* Black background for the entire app */
+    color: #fff; /* White text for readability */
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #000; /* Change to black */
+    border-bottom: 1px solid #444; /* Optional: Darker border for separation */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.title {
+    font-size: 24px;
+    font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #000; /* Black background */
+    color: #fff;
 }
 
-.card {
-  padding: 2em;
+.featured-section {
+    flex: 1;
+    padding: 20px;
+    background-color: #000; /* Change to black */
+    color: #fff; /* Ensure text is visible */
 }
 
-.read-the-docs {
-  color: #888;
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #000; /* Black background */
+    color: #fff;
 }

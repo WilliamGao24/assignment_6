@@ -1,0 +1,41 @@
+.genres-container {
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #fff;
+}
+
+.genres-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.genres-list li {
+    margin: 0;
+}
+
+.genres-button {
+    background-color: #646cff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.genres-button:hover {
+    background-color: #535bf2;
+    transform: scale(1.05);
+}
+
+.genres-button:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
