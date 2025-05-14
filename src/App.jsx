@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { StoreProvider } from './context/context';
 import HomeView from "./Views/HomeView.jsx";
 import RegisterView from "./Views/RegisterView.jsx";
 import LoginView from "./Views/LoginView.jsx";
@@ -10,18 +11,20 @@ import ErrorView from "./Views/ErrorView.jsx";
 
 function App() {
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<HomeView />} />
-                <Route path="/register" element={<RegisterView />} />
-                <Route path="/login" element={<LoginView />} />
-                <Route path="/movies" element={<MoviesView />}>
-                    <Route path="genre/:genre_id" element={<GenreView />} />
-                    <Route path="details/:id" element={<DetailMovieView />} />
-                </Route>
-                <Route path="*" element={<ErrorView />} />
-            </Routes>
-        </BrowserRouter>
+        <StoreProvider>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<HomeView />} />
+                    <Route path="/register" element={<RegisterView />} />
+                    <Route path="/login" element={<LoginView />} />
+                    <Route path="/movies" element={<MoviesView />}>
+                        <Route path="genre/:genre_id" element={<GenreView />} />
+                        <Route path="details/:id" element={<DetailMovieView />} />
+                    </Route>
+                    <Route path="*" element={<ErrorView />} />
+                </Routes>
+            </BrowserRouter>
+        </StoreProvider>
     );
 }
 
