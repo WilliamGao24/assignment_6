@@ -2,8 +2,12 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #000; /* Black background for the entire app */
-    color: #fff; /* White text for readability */
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
 .header {
@@ -11,8 +15,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #000; /* Change to black */
-    border-bottom: 1px solid #444; /* Optional: Darker border for separation */
+    background-color: #000;
+    border-bottom: 1px solid #444;
 }
 
 .title {
@@ -25,20 +29,20 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
-    background-color: #000; /* Black background */
+    background-color: #000;
     color: #fff;
 }
 
 .featured-section {
     flex: 1;
     padding: 20px;
-    background-color: #000; /* Change to black */
-    color: #fff; /* Ensure text is visible */
+    background-color: #000;
+    color: #fff;
 }
 
 .footer {
     text-align: center;
     padding: 20px;
-    background-color: #000; /* Black background */
+    background-color: #000;
     color: #fff;
 }

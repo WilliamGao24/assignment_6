@@ -26,7 +26,7 @@
 
 .search-form {
     display: flex;
-    align-items: center;
+    gap: 10px;
 }
 
 .search-input {
@@ -35,16 +35,8 @@
     border: 1px solid #444;
     background-color: #2a2a2a;
     color: #fff;
-    width: 300px;
-    font-size: 14px;
+    width: 200px;
 }
-
-.search-input:focus {
-    outline: none;
-    border-color: #646cff;
-    box-shadow: 0 0 0 2px rgba(100, 108, 255, 0.2);
-}
-
 
 .search-button {
     padding: 8px 16px;
