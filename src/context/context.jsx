@@ -11,7 +11,7 @@ export const StoreProvider = ({ children }) => {
     const [password, setPassword] = useState("");
     const [cart, setCart] = useState(Map());
     const [selectedGenres, setSelected] = useState([]);
-    const [currentGenre, setCurrentGenre] = useState([]);
+    const [registeredUsers, setRegisteredUsers] = useState([]);
 
     return (
         <StoreContext.Provider value={{
@@ -21,14 +21,12 @@ export const StoreProvider = ({ children }) => {
             firstName, setFirst,
             lastName, setLast,
             selectedGenres, setSelected,
-            currentGenre, setCurrentGenre,
-            loggedIn, setLoggedIn
+            loggedIn, setLoggedIn,
+            registeredUsers, setRegisteredUsers
         }}>
             {children}
         </StoreContext.Provider>
     );
 }
 
-export const useStoreContext = () => {
-    return useContext(StoreContext);
-}
+export const useStoreContext = () => useContext(StoreContext);

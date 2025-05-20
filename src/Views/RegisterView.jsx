@@ -6,7 +6,16 @@ import { useStoreContext } from '../context/context';
 
 function RegisterView() {
     const navigate = useNavigate();
-    const { setFirst, setLast, setEmail, setPassword, setSelected } = useStoreContext();
+    const { 
+        setFirst, 
+        setLast, 
+        setEmail, 
+        setPassword, 
+        setSelected, 
+        setLoggedIn,
+        registeredUsers,    
+        setRegisteredUsers  
+    } = useStoreContext();
     
     const [formData, setFormData] = useState({
         firstName: '',
@@ -55,25 +64,41 @@ function RegisterView() {
             alert("Please fill in all fields!");
             return;
         }
-
+    
         if (formData.password !== formData.confirmPassword) {
             alert("Passwords don't match!");
             return;
         }
-
+    
         if (formData.genres.length < 5) {
             alert("Please select at least 5 genres!");
             return;
         }
 
-        // Update context with form data
+        // Check if user already exists
+        if (registeredUsers.some(user => user.email === formData.email)) {
+            alert("Email already registered!");
+            return;
+        }
+    
         setFirst(formData.firstName);
         setLast(formData.lastName);
         setEmail(formData.email);
         setPassword(formData.password);
         setSelected(formData.genres);
+        setLoggedIn(true);
 
-        // Navigate to first selected genre
+        setRegisteredUsers([
+            ...registeredUsers,
+            {
+                email: formData.email,
+                password: formData.password,
+                firstName: formData.firstName,
+                lastName: formData.lastName,
+                genres: formData.genres
+            }
+        ]);
+    
         navigate(`/movies/genre/${formData.genres[0]}`);
     };
 

@@ -1,70 +1,84 @@
-.hero {
-    padding: 1rem;
-    background-color: #000;
-    color: #fff;
-}
-
-.hero h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    color: #fff;
-    text-align: center;
-}
-
 .genre-view-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Fixed 4 columns */
-    gap: 1.5rem;
-    margin: 0 auto;
-    max-width: 100%;
-}
-
-.genre-view-item {
-    aspect-ratio: 2/3;
-    background-color: #1a1a1a;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-}
-
-.genre-view-item:hover {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+  }
+  
+  .genre-view-item {
+    position: relative;
+    transition: transform 0.2s;
+  }
+  
+  .genre-view-item:hover {
     transform: scale(1.05);
-}
-
-.genre-view-image {
+  }
+  
+  .genre-view-image {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.no-image {
-    height: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .buy-button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px;
+    background-color: #646cff;
+    color: white;
+    border: none;
+    border-radius: 0 0 8px 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    opacity: 0;
+  }
+  
+  .genre-view-item:hover .buy-button {
+    opacity: 1;
+  }
+  
+  .buy-button.added {
+    background-color: #22c55e;
+    opacity: 1;
+  }
+  
+  .buy-button:hover {
+    background-color: #535bf2;
+  }
+  
+  .buy-button.added:hover {
+    background-color: #16a34a;
+  }
+  
+  .no-image {
+    height: 300px;
     background-color: #2a2a2a;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #666;
-    font-size: 0.875rem;
-}
-
-.genre-view-pagination-container {
+    border-radius: 8px;
+  }
+  
+  .genre-view-pagination-container {
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin-top: 2rem;
-}
-
-.genre-view-pagination-button {
-    padding: 0.75rem 1.5rem;
+    padding: 2rem;
+  }
+  
+  .genre-view-pagination-button {
+    padding: 8px 16px;
     background-color: #646cff;
-    color: #fff;
+    color: white;
     border: none;
-    border-radius: 0.5rem;
+    border-radius: 4px;
     cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.genre-view-pagination-button:hover {
-    background-color: #535bf2;
-    transform: translateY(-2px);
-}
+  }
+  
+  .genre-view-pagination-button:disabled {
+    background-color: #4a4a4a;
+    cursor: not-allowed;
+  }

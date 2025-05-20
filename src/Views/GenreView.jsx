@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { useStoreContext } from '../context/context';
 import "./GenreView.css";
 
 const genres = [
@@ -20,8 +21,21 @@ function GenreView() {
   const { genre_id } = useParams();
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
+  const { cart, setCart } = useStoreContext();
+  
   const selectedGenre = genres.find(genre => genre.id === parseInt(genre_id));
   const genreName = selectedGenre ? selectedGenre.genre : "Movies in Genre";
+
+  const handleAddToCart = (movie, e) => {
+    e.preventDefault(); // Prevent navigation when clicking the button
+    setCart(prevCart => {
+      if (prevCart.has(movie.id)) {
+        return prevCart.delete(movie.id);
+      } else {
+        return prevCart.set(movie.id, movie);
+      }
+    });
+  };
 
   useEffect(() => {
     async function fetchMovies() {
@@ -54,6 +68,12 @@ function GenreView() {
                 ) : (
                   <div className="no-image">No Image Available</div>
                 )}
+                <button 
+                  className={`buy-button ${cart.has(movie.id) ? 'added' : ''}`}
+                  onClick={(e) => handleAddToCart(movie, e)}
+                >
+                  {cart.has(movie.id) ? 'Added' : 'Buy'}
+                </button>
               </Link>
             </div>
           ))
@@ -65,6 +85,7 @@ function GenreView() {
         <button
           className="genre-view-pagination-button"
           onClick={() => setPage((p) => Math.max(p - 1, 1))}
+          disabled={page === 1}
         >
           Prev
         </button>

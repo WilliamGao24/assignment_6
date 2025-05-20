@@ -15,9 +15,82 @@
     color: #fff;
     letter-spacing: 1px;
     text-transform: uppercase;
+    text-decoration: none;
 }
 
-.login {
+.user-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #444;
+    background-color: #2a2a2a;
+    color: #fff;
+    width: 300px;
+    font-size: 14px;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #646cff;
+    box-shadow: 0 0 0 2px rgba(100, 108, 255, 0.2);
+}
+
+
+.search-button {
+    padding: 8px 16px;
+    background-color: #646cff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.user-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.welcome-message {
+    color: #fff;
+    font-weight: 500;
+}
+
+.nav-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    padding: 0 16px;
+    background-color: #646cff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: #535bf2;
+}
+
+.logout-button {
+    background-color: #dc3545;
+}
+
+.auth-buttons {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -28,7 +101,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 32px;  /* Fixed height instead of 100% */
+    height: 32px;
     padding: 0 16px;
     background-color: #646cff;
     color: #fff;

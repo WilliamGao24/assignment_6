@@ -1,52 +1,75 @@
-import './LoginView.css';
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { useStoreContext } from '../context/context';
 import Header from "../components/Header";
+import "./LoginView.css";
 
 function LoginView() {
-    const [password, setPassword] = useState('');
-    const [email, setEmail] = useState('');
+    const [loginEmail, setLoginEmail] = useState('');
+    const [loginPassword, setLoginPassword] = useState('');
     const navigate = useNavigate();
+    const { 
+        setLoggedIn, 
+        registeredUsers,
+        setFirst,
+        setLast,
+        setEmail,
+        setPassword,
+        setSelected
+    } = useStoreContext();
 
-    function login(event) {
+    const handleLogin = (event) => {
         event.preventDefault();
-        if (password === "mango") {
-            navigate('/movies');
-        } else {
-            alert("Wrong password!");
+        
+        // Find user in registered users
+        const user = registeredUsers.find(user => user.email === loginEmail);
+        
+        if (!user) {
+            alert("User not found!");
+            return;
         }
-    }
+
+        if (user.password !== loginPassword) {
+            alert("Incorrect password!");
+            return;
+        }
+
+        // Set all user data in context
+        setLoggedIn(true);
+        setFirst(user.firstName);
+        setLast(user.lastName);
+        setEmail(user.email);
+        setPassword(user.password);
+        setSelected(user.genres);
+
+        // Navigate to the first genre in user's preferences
+        navigate(`/movies/genre/${user.genres[0]}`);
+    };
 
     return (
         <div className="login-container">
             <Header />
             <div className="form-container">
                 <h2>Login to Your Account</h2>
-                <form onSubmit={login}>
-                    <div className="form-group">
-                        <label htmlFor="email">Email</label>
-                        <input 
-                            type="email" 
-                            id="email" 
-                            name="email" 
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required 
-                        />
-                    </div>
-
-                    <div className="form-group">
-                        <label htmlFor="password">Password</label>
+                <form onSubmit={handleLogin}>
+                    <div className="input-group">
+                        <label>Email:</label>
                         <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            type="email"
+                            value={loginEmail}
+                            onChange={(e) => setLoginEmail(e.target.value)}
                             required
                         />
                     </div>
-
+                    <div className="input-group">
+                        <label>Password:</label>
+                        <input
+                            type="password"
+                            value={loginPassword}
+                            onChange={(e) => setLoginPassword(e.target.value)}
+                            required
+                        />
+                    </div>
                     <button type="submit" className="login-button">Login</button>
                 </form>
                 <p className="register-link">
